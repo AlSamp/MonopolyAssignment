@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MonopolyAssignment", "MonopolyAssignment\MonopolyAssignment.vcxproj", "{A162C0D0-3022-4E60-ADC8-40B9C9144754}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A162C0D0-3022-4E60-ADC8-40B9C9144754}.Debug|x64.ActiveCfg = Debug|x64
+		{A162C0D0-3022-4E60-ADC8-40B9C9144754}.Debug|x64.Build.0 = Debug|x64
+		{A162C0D0-3022-4E60-ADC8-40B9C9144754}.Debug|x86.ActiveCfg = Debug|Win32
+		{A162C0D0-3022-4E60-ADC8-40B9C9144754}.Debug|x86.Build.0 = Debug|Win32
+		{A162C0D0-3022-4E60-ADC8-40B9C9144754}.Release|x64.ActiveCfg = Release|x64
+		{A162C0D0-3022-4E60-ADC8-40B9C9144754}.Release|x64.Build.0 = Release|x64
+		{A162C0D0-3022-4E60-ADC8-40B9C9144754}.Release|x86.ActiveCfg = Release|Win32
+		{A162C0D0-3022-4E60-ADC8-40B9C9144754}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE9FA0DF-454D-4525-9F66-94A25615C27B}
+	EndGlobalSection
+EndGlobal
