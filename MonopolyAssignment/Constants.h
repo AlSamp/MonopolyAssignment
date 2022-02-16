@@ -14,6 +14,12 @@ extern const int PASS_GO_AMOUNT;
 extern const int JAIL_PAYMENT;
 extern const int STATION_RENT;
 extern const int STATION_PRICE;
+extern const int BONUS_PENALTY_1;
+extern const int BONUS_PENALTY_2;
+extern const int BONUS_PENALTY_3;
+extern const int BONUS_PENALTY_4;
+extern const int BONUS_PENALTY_5;
+extern const int BONUS_PENALTY_6;
 
 //constr strings
 extern const string PLAYER_1_NAME;

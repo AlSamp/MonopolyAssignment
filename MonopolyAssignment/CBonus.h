@@ -1,5 +1,6 @@
 #pragma once
 #include "CSquare.h"
+#include <ctime>
 class CBonus : public CSquare
 {
 
@@ -11,7 +12,8 @@ protected:
 public:
 
 	CBonus(istream& file);
-
+	int Random();
+	void OnLanding(shared_ptr<CPlayer> playerWhoLanded);
 	friend istream& operator >> (istream& inputStream, CBonus& go);
 
 public:

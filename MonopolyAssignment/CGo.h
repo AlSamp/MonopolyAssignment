@@ -13,6 +13,11 @@ public:
 	
 	friend istream& operator >> (istream& inputStream, CGo& go);
 
+	void OnLanding()
+	{
+		// Do nothing for now
+	}
+
 
 };
 
