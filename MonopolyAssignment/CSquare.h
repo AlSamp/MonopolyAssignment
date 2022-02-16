@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "CPlayer.h" // dependecy?
+#include"Constants.h"
 using namespace std;
 class CSquare
 {
@@ -14,15 +15,15 @@ public:
 		
 	}
 
-	virtual void OnLanding(CPlayer& playerWhoLanded,CPlayer& propertyOwner) // TODO make this pure after wards.
+	virtual void OnLanding(shared_ptr<CPlayer> playerWhoLanded) // TODO make this pure after wards.
 	{
 		cout << "ERROR BASE CLASS FUNCTION CALLED" << endl;
 	}
 
-	virtual void OnLanding(CPlayer& playerWhoLanded)
-	{
-
-	}
+	//virtual void OnLanding(CPlayer& playerWhoLanded)
+	//{
+	//
+	//}
 	
 
 	friend istream& operator >> (istream& inputStream, CSquare& square);

@@ -6,7 +6,7 @@ using namespace std;
 class CPlayer
 {
 public:
-	string mName;
+	string mName; //TODO makes this private and make/use the appropriate getters and setters
 	int mMoney;
 	int mPlayerPosition;
 

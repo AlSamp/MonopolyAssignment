@@ -8,7 +8,7 @@
 #include <fstream>
 #include <vector>
 
-#include "Constants.h"
+
 #include "CSquareFactory.h"
 #include "CSquare.h"
 #include "CPlayer.h"
@@ -33,7 +33,7 @@ int Player1Roll()
 	return Random();
 }
 
-void MovePlayer(CPlayer* player, int roll, int boardSize)
+void MovePlayer(shared_ptr<CPlayer> player, int roll, int boardSize)
 {
 	for (int j = 0; j < roll; j++) // move the player on square at a time
 	{
@@ -50,9 +50,9 @@ void MovePlayer(CPlayer* player, int roll, int boardSize)
 	}
 }
 
-void PlayerLanding(CPlayer& playerWhoLanded, CPlayer& propertyOwner, CSquare& square) // TODO override each class function for landing on a square in each of the derived classes.
+void PlayerLanding(shared_ptr<CPlayer> playerWhoLanded, CSquare& square) // TODO override each class function for landing on a square in each of the derived classes.
 {
-	square.OnLanding(playerWhoLanded,propertyOwner);
+	square.OnLanding(playerWhoLanded);
 	//square.OnLanding(playerWhoLanded);
 }
 
@@ -121,8 +121,10 @@ int main()
 
 
 		{
-			CPlayer* player1 = new CPlayer(PLAYER_1_NAME,STARTING_MONEY); // TODO convert to smart pointers.
-			CPlayer* player2 = new CPlayer(PLAYER_2_NAME, STARTING_MONEY);
+			shared_ptr<CPlayer> player1 = make_shared<CPlayer>(PLAYER_1_NAME, STARTING_MONEY);
+			shared_ptr<CPlayer> player2 = make_shared<CPlayer>(PLAYER_2_NAME, STARTING_MONEY);
+			//CPlayer* player1 = new CPlayer(PLAYER_1_NAME,STARTING_MONEY); // TODO convert to smart pointers.
+			//CPlayer* player2 = new CPlayer(PLAYER_2_NAME, STARTING_MONEY);
 		
 			int diceRoll;
 			int boardSize = squareList.size();
@@ -146,7 +148,7 @@ int main()
 				// acknowledge player position and then perform the appropriate actions for the square they landed on.
 				cout << *player1 << " is at " << *squareList[player1->mPlayerPosition] << endl;
 				// Proceed with square specific rules upon a player landing.
-				PlayerLanding(*player1,*player2,*squareList[player1->mPlayerPosition]);
+				PlayerLanding(player1,*squareList[player1->mPlayerPosition]);
 				
 
 				// Player 2 turn
@@ -159,12 +161,8 @@ int main()
 				// acknowledge player position and then perform the appropriate actions for the square they landed on.
 				cout << *player2 << " is at " << *squareList[player2->mPlayerPosition] << endl;
 				// Proceed with square specific rules upon a player landing.
-				PlayerLanding(*player2, *player1, *squareList[player2->mPlayerPosition]);
+				PlayerLanding(player2, *squareList[player2->mPlayerPosition]);
 				
-
-
-
-		
 		
 			}
 		
@@ -192,37 +190,8 @@ int main()
 				'<Player2> has £<amount>
 				‘<Player> wins.*/
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+				
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		cout << "Square List capacity = " << squareList.size() << endl;
 
@@ -239,9 +208,10 @@ int main()
 
 	}
 
-	{
+	
+
 
 		_CrtDumpMemoryLeaks(); // memory leak detection.
-	}
+	
 
 }

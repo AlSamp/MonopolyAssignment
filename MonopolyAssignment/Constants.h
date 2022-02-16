@@ -3,19 +3,22 @@
 
 using namespace std;
 
+
 //const ints
-const int STARTING_MONEY = 1500;
-const int MAX_NUM_ROUNDS = 20;
-const int SEED = 4;
-const int PLAYER_1_SEED = 3;
-const int PLAYER_2_SEED = 4;
-const int PASS_GO_AMOUNT = 200;
+extern const int STARTING_MONEY;
+extern const int MAX_NUM_ROUNDS;
+extern const int SEED;
+extern const int PLAYER_1_SEED;
+extern const int PLAYER_2_SEED;
+extern const int PASS_GO_AMOUNT;
+extern const int JAIL_PAYMENT;
+extern const int STATION_RENT;
+extern const int STATION_PRICE;
 
 //constr strings
-const string PLAYER_1_NAME = "Hamster";
-const string PLAYER_2_NAME = "Pumpkin";
-const string GO_MESSAGE = " passes GO and collects ";
-const string GAME_START_MESSAGE = "Welcome to Monopol-ish";
-
+extern const string PLAYER_1_NAME;
+extern const string PLAYER_2_NAME;
+extern const string GO_MESSAGE;
+extern const string GAME_START_MESSAGE;
 //const chars
-const char POUND = 156;
+extern const char POUND;

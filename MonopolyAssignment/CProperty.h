@@ -1,5 +1,6 @@
 #pragma once
 #include "CSquare.h"
+#include "Constants.h"
 
 class CProperty : public CSquare
 {
@@ -9,7 +10,8 @@ protected:
 	int propertyRent;
 	int propertyColour;
 	bool isOwned;
-	string owner;
+
+	shared_ptr<CPlayer> owner;
 
 public:
 
@@ -22,8 +24,8 @@ public:
 	void setIsOwned(bool newStatus);
 	bool getIsOwned();
 	string getOwner();
-	void setOwner(string newOwner);
-	void OnLanding(CPlayer& playerWhoLanded, CPlayer& propertyOwner);
+	void setOwner(shared_ptr<CPlayer>& newOwner);
+	void OnLanding(shared_ptr<CPlayer> playerWhoLanded);
 
 
 	

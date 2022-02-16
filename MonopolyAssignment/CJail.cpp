@@ -5,12 +5,14 @@ CJail::CJail(istream& file) : CSquare(file)
 	file >> *this;
 }
 
+
+
 istream& operator>>(istream& inputStream, CJail& jail)
 {
 	return inputStream;
 }
 
-void CJail::OnLanding(CPlayer& player)
+void CJail::OnLanding(shared_ptr<CPlayer> playerWhoLanded) 
 {
-	cout << player.mName << " is just visiting." << endl;
+	cout << playerWhoLanded->mName << " is just visiting." << endl;
 }

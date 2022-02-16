@@ -12,7 +12,10 @@ istream& operator>>(istream& inputStream, CFreeParking& freeParking)
 	return inputStream;
 }
 
-//void CFreeParking::DisplayName()
-//{
-//	cout << name << " " << namePart2 << endl;
-//}
+
+void CFreeParking::OnLanding(shared_ptr<CPlayer> playerWhoLanded)
+{
+	// Inform player of circumstance.
+	cout << playerWhoLanded->mName << " lands on Free Parking." << endl;
+	cout << playerWhoLanded->mName << " is resting" << endl;
+}

@@ -1,5 +1,5 @@
 #include "CProperty.h"
-#include "Constants.h"
+
 
 CProperty::CProperty(istream& file) : CSquare(file)
 {
@@ -10,7 +10,7 @@ CProperty::CProperty(istream& file) : CSquare(file)
 	propertyCost = NULL;
 	propertyRent = NULL;
 	isOwned = false;
-	owner = "UNOWNED";
+	owner = nullptr;
 	
 	file >> *this;
 }
@@ -58,12 +58,9 @@ void CProperty::setIsOwned(bool newStatus)
 	isOwned = newStatus;
 }
 
-string CProperty::getOwner()
-{
-	return owner;
-}
 
-void CProperty::setOwner(string newOwner)
+
+void CProperty::setOwner(shared_ptr<CPlayer>&  newOwner)
 {
 	owner = newOwner;
 }
@@ -73,40 +70,37 @@ bool CProperty::getIsOwned()
 	return isOwned;
 }
 
-void CProperty::OnLanding(CPlayer& playerWhoLanded, CPlayer& propertyOwner) // 
+void CProperty::OnLanding(shared_ptr<CPlayer> playerWhoLanded) // 
 {
 	// check is property is owned. 
 	if (isOwned == false)
 	{
 		//If not player buys it if they have the funds.
-		if (playerWhoLanded.mMoney > 0)
+		if (playerWhoLanded->mMoney > 0)
 		{
 			//charge the player for their purchase.
-			playerWhoLanded.mMoney -= this->propertyCost;
+			playerWhoLanded->mMoney -= this->propertyCost;
 			//Set that player as the owner
 			isOwned = true;
-			owner = playerWhoLanded.mName;
-			cout << playerWhoLanded << " bought " << this->name << " for " << POUND << this->propertyCost << "." << endl;
+			owner = playerWhoLanded;
+			cout << *playerWhoLanded << " buys " << this->name << " for " << POUND << this->propertyCost << "." <<endl;
 		}
 		else
 		{
-			cout << playerWhoLanded << " does not have enough money to purchase " << this->name << endl; // TODO make this refer to full names
+			cout << *playerWhoLanded << " does not have enough money to purchase " << this->name << endl; // TODO make this refer to full names
 		}
 	}
 	else  // if the property is owned
 	{
 		// if the player does not own the property and is it owned, charge them rent.
-		if (playerWhoLanded.mName != this->owner)
+		if (playerWhoLanded->mName != owner->mName)
 		{
 			//charge the player rent
-			playerWhoLanded.mMoney -= this->propertyRent;
+			playerWhoLanded->mMoney -= this->propertyRent;
 			// pay the owner rent
-			propertyOwner.mMoney += this->propertyRent;
+			owner->mMoney += this->propertyRent;
 
-			cout << playerWhoLanded << " has payed " << POUND << propertyRent << " rent to " << propertyOwner << "." << endl;
+			cout << *playerWhoLanded << " has payed " << POUND << propertyRent << " rent to " << owner->mName << "." << endl;
 		}
 	}
-
-
-
 }

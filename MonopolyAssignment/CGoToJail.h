@@ -11,6 +11,7 @@ protected:
 public:
 
 	CGoToJail(istream& file);
+	void OnLanding(shared_ptr<CPlayer> playerWhoLanded);
 
 	friend istream& operator >> (istream& inputStream, CGoToJail& goToJail);
 };
