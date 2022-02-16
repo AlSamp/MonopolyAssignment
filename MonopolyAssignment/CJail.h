@@ -10,6 +10,7 @@ protected:
 public:
 
 	CJail(istream& file);
+	void OnLanding(CPlayer& player);
 
 	friend istream& operator >> (istream& inputStream, CJail& go);
 };

@@ -158,6 +158,7 @@
     <ClInclude Include="CGo.h" />
     <ClInclude Include="CGoToJail.h" />
     <ClInclude Include="CJail.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="CPenalty.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CProperty.h" />

@@ -1,5 +1,6 @@
 #pragma once
 #include "CSquare.h"
+
 class CProperty : public CSquare
 {
 protected:
@@ -7,15 +8,25 @@ protected:
 	int propertyCost;
 	int propertyRent;
 	int propertyColour;
+	bool isOwned;
+	string owner;
 
 public:
 
 	CProperty(istream& file);
 
-	friend istream& operator >> (istream& inputStream, CProperty& property);
-
 	void Display();
+	int getRent();
+	int getCost();
+	int getColour();
+	void setIsOwned(bool newStatus);
+	bool getIsOwned();
+	string getOwner();
+	void setOwner(string newOwner);
+	void OnLanding(CPlayer& playerWhoLanded, CPlayer& propertyOwner);
+
 
 	
+	friend istream& operator >> (istream& inputStream, CProperty& property);
 };
 

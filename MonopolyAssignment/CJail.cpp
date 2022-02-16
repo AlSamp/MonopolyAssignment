@@ -9,3 +9,8 @@ istream& operator>>(istream& inputStream, CJail& jail)
 {
 	return inputStream;
 }
+
+void CJail::OnLanding(CPlayer& player)
+{
+	cout << player.mName << " is just visiting." << endl;
+}
