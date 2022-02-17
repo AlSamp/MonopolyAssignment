@@ -15,7 +15,7 @@ public:
 		
 	}
 
-	virtual void OnLanding(shared_ptr<CPlayer> playerWhoLanded) = 0;// TODO make this pure after wards.
+	virtual void OnLanding(shared_ptr<CPlayer> playerWhoLanded) = 0;
 	//{
 	//	cout << "ERROR BASE CLASS FUNCTION CALLED" << endl;
 	//}
@@ -24,12 +24,6 @@ public:
 	{
 		cout << name;
 	}
-
-	//virtual void OnLanding(CPlayer& playerWhoLanded)
-	//{
-	//
-	//}
-	
 
 	friend istream& operator >> (istream& inputStream, CSquare& square);
 	

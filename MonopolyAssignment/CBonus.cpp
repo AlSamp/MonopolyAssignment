@@ -13,6 +13,7 @@ istream& operator>>(istream& inputStream, CBonus& bonus)
 void CBonus::OnLanding(shared_ptr<CPlayer> playerWhoLanded)
 {
 	// roll dice, each dice roll from 1 - 6 has its own negative outcome for the player
+	//srand(SEED);
 	int diceRoll = Random();
 
 	//cout << *playerWhoLanded << " lands on Bonus." << endl;
@@ -21,7 +22,7 @@ void CBonus::OnLanding(shared_ptr<CPlayer> playerWhoLanded)
 	{
 	case 1:
 		// 1 - Find some money gain £20.
-		cout << "Find some money money. Gain " << POUND << "20!" << endl;
+		cout << "Find some money. Gain " << POUND << "20!" << endl;
 		playerWhoLanded->mMoney += BONUS_PENALTY_1;
 		break;
 	case 2:

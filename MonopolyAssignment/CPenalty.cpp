@@ -13,9 +13,9 @@ istream& operator>>(istream& inputStream, CPenalty& penalty)
 void CPenalty::OnLanding(shared_ptr<CPlayer> playerWhoLanded)
 {
 	// roll dice, each dice roll from 1 - 6 has its own negative outcome for the player
+	//srand(SEED);
 	int diceRoll = Random();
 
-	cout << *playerWhoLanded << " lands on Penalty." << endl;
 
 	switch (diceRoll)
 	{

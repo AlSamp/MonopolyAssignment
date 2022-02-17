@@ -43,7 +43,7 @@ void CStation::OnLanding(shared_ptr<CPlayer> playerWhoLanded) //
 		}
 		else
 		{
-			cout << *playerWhoLanded << " does not have enough money to purchase " << this->name << endl; // TODO make this refer to full names
+			cout << *playerWhoLanded << " does not have enough money to purchase "; DisplayName(); cout << endl; // TODO make this refer to full names
 		}
 	}
 	else  // if the property is owned

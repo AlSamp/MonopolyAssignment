@@ -16,7 +16,6 @@ istream& operator>>(istream& inputStream, CFreeParking& freeParking)
 void CFreeParking::OnLanding(shared_ptr<CPlayer> playerWhoLanded)
 {
 	// Inform player of circumstance.
-	cout << playerWhoLanded->mName << " lands on Free Parking." << endl;
 	cout << playerWhoLanded->mName << " is resting" << endl;
 }
 
