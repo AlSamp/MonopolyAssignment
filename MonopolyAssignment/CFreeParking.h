@@ -14,6 +14,6 @@ public:
 
 	friend istream& operator >> (istream& inputStream, CFreeParking& freeParking);
 
-	/*void DisplayName();*/
+	void DisplayName();
 };
 

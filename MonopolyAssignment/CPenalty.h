@@ -13,7 +13,6 @@ public:
 	CPenalty(istream& file);
 	int Random();
 	void OnLanding(shared_ptr<CPlayer> playerWhoLanded);
-
 	friend istream& operator >> (istream& inputStream, CPenalty& go);
 };
 

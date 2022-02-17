@@ -19,3 +19,8 @@ void CFreeParking::OnLanding(shared_ptr<CPlayer> playerWhoLanded)
 	cout << playerWhoLanded->mName << " lands on Free Parking." << endl;
 	cout << playerWhoLanded->mName << " is resting" << endl;
 }
+
+void CFreeParking::DisplayName() // CSquare overridden virtual function
+{
+	cout << " " << name << " " << namePart2 << " ";
+}

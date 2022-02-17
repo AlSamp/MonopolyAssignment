@@ -10,7 +10,6 @@ protected:
 	int propertyRent;
 	int propertyColour;
 	bool isOwned;
-
 	shared_ptr<CPlayer> owner;
 
 public:
@@ -18,13 +17,14 @@ public:
 	CProperty(istream& file);
 
 	void Display();
+	void DisplayName();
 	int getRent();
 	int getCost();
 	int getColour();
 	void setIsOwned(bool newStatus);
 	bool getIsOwned();
 	string getOwner();
-	void setOwner(shared_ptr<CPlayer>& newOwner);
+	void setOwner(shared_ptr<CPlayer> newOwner);
 	void OnLanding(shared_ptr<CPlayer> playerWhoLanded);
 
 

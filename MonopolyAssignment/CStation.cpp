@@ -21,6 +21,11 @@ istream& operator>>(istream& inputStream, CStation& station)
 	return inputStream;
 }
 
+void CStation::DisplayName()
+{
+	cout << name << " " << namePart2;
+}
+
 void CStation::OnLanding(shared_ptr<CPlayer> playerWhoLanded) // 
 {
 	// check is property is owned. 
@@ -34,7 +39,7 @@ void CStation::OnLanding(shared_ptr<CPlayer> playerWhoLanded) //
 			//Set that player as the owner
 			isOwned = true;
 			owner = playerWhoLanded;
-			cout << *playerWhoLanded << " buys " << this->name << " for " << POUND << STATION_PRICE << "." << endl;
+			cout << *playerWhoLanded << " buys "; DisplayName(); cout  << " for " << POUND << STATION_PRICE << endl;
 		}
 		else
 		{
@@ -51,7 +56,7 @@ void CStation::OnLanding(shared_ptr<CPlayer> playerWhoLanded) //
 			// pay the owner rent
 			owner->mMoney += STATION_RENT;
 
-			cout << *playerWhoLanded << " has payed " << POUND << STATION_RENT << " rent to " << owner->mName << "." << endl;
+			cout << *playerWhoLanded << " pays " << POUND << STATION_RENT << " for ticket " << endl; // << owner->mName
 		}
 	}
 

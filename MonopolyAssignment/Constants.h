@@ -21,6 +21,10 @@ extern const int BONUS_PENALTY_4;
 extern const int BONUS_PENALTY_5;
 extern const int BONUS_PENALTY_6;
 
+// const floats
+extern const float SIDE_OF_DICE;
+extern const float NUMBER_OF_BONUS_PENALTY;
+
 //constr strings
 extern const string PLAYER_1_NAME;
 extern const string PLAYER_2_NAME;

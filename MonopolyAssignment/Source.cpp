@@ -14,16 +14,16 @@
 #include "CPlayer.h"
 #include "CProperty.h"
 
-
+typedef vector<unique_ptr<CSquare>> myVector; // TODO ask about this
 
 using namespace std;
 
 
 // Returns a random number in the range 1 .. 6
-// Note that I am using casting to convert one data type to another
+// Note that I am using casting to convert one data type to another 
 int Random()
 {
-	return static_cast<int>(static_cast<double> (rand()) / (RAND_MAX + 1) * 6.0f + 1);
+	return static_cast<int>(static_cast<double> (rand()) / (RAND_MAX + 1) * SIDE_OF_DICE + 1);
 }
 
 void MovePlayer(shared_ptr<CPlayer> player, int roll, int boardSize)
@@ -46,18 +46,13 @@ void MovePlayer(shared_ptr<CPlayer> player, int roll, int boardSize)
 void PlayerLanding(shared_ptr<CPlayer> playerWhoLanded, CSquare& square) // TODO override each class function for landing on a square in each of the derived classes.
 {
 	square.OnLanding(playerWhoLanded);
-	//square.OnLanding(playerWhoLanded);
 }
 
-int main() // TODO fixing output of square names
+int main()
 {
 	{
-
-
-		//vector<CSquare*> squareList;
-		vector<unique_ptr<CSquare>> squareList;
+		myVector vSquareList;
 		ifstream infile;
-
 
 		infile.open("monopoly.txt");
 		if (infile.is_open())
@@ -70,12 +65,12 @@ int main() // TODO fixing output of square names
 				infile >> type;
 				if (type != 0)
 				{
-					cout << "Got square type : " << type;
-					squareList.push_back(NewSquare(ESquareType(type), infile)); // cast type into enum
-					cout << "  Name = " << *squareList.back();
+					//cout << "Got square type : " << type;
+					vSquareList.push_back(NewSquare(ESquareType(type), infile)); // cast type into enum
+					//squareList.back()->DisplayName();
 
 				}
-				cout << endl;
+				//cout << endl;
 
 			}
 		}
@@ -90,18 +85,18 @@ int main() // TODO fixing output of square names
 			shared_ptr<CPlayer> player2 = make_shared<CPlayer>(PLAYER_2_NAME, STARTING_MONEY);
 		
 			int diceRoll;
-			int boardSize = squareList.size();
+			int boardSize = vSquareList.size();
 		
 			cout << GAME_START_MESSAGE << endl;
 		
 			for (int round = 1; round <= MAX_NUM_ROUNDS; round++) // 
 			{
-				cout << endl << "Round " << round << endl; // Output what round it is.
-				cout << player1->mName << " has " << POUND << player1->mMoney << endl;
-				cout << player2->mName << " has " << POUND << player2->mMoney << endl;
+				cout << endl << "<< Round " << round << " >>" << endl; // Output what round it is.
+				
+				
 
 				// Player 1 turn
-				cout << endl << "Player 1 turn begins." << endl;
+				cout << endl << "Player 1 turn begins" << endl;
 		
 				diceRoll = Random(); // obtain dice roll.
 				cout << *player1 << " rolls : " << diceRoll << endl;
@@ -109,23 +104,26 @@ int main() // TODO fixing output of square names
 				MovePlayer(player1, diceRoll, boardSize);
 		
 				// acknowledge player position and then perform the appropriate actions for the square they landed on.
-				cout << *player1 << " lands on " << *squareList[player1->mPlayerPosition] << endl;
+				cout << *player1 << " lands on "; vSquareList[player1->mPlayerPosition]->DisplayName(); cout << endl;
 				// Proceed with square specific rules upon a player landing.
-				PlayerLanding(player1,*squareList[player1->mPlayerPosition]);
+				PlayerLanding(player1,*vSquareList[player1->mPlayerPosition]);
+				//At the end of each player’s inform them of their current balance.
+				cout << player1->mName << " has " << POUND << player1->mMoney << endl;
 				
 
 				// Player 2 turn
-				cout << endl << "Player 2 turn begins." << endl;
+				cout << endl << "Player 2 turn begins" << endl;
 				diceRoll = Random(); // obtain dice roll.
 				cout << *player2 << " rolls : " << diceRoll << endl;
 				// move the player to said property.
 				MovePlayer(player2, diceRoll, boardSize);
 
 				// acknowledge player position and then perform the appropriate actions for the square they landed on.
-				cout << *player2 << " lands on " << *squareList[player2->mPlayerPosition] << endl;
+				cout << *player2 << " lands on "; vSquareList[player2->mPlayerPosition]->DisplayName(); cout << endl;
 				// Proceed with square specific rules upon a player landing.
-				PlayerLanding(player2, *squareList[player2->mPlayerPosition]);
-				
+				PlayerLanding(player2, *vSquareList[player2->mPlayerPosition]);
+				//At the end of each player’s inform them of their current balance.
+				cout << player2->mName << " has " << POUND << player2->mMoney << endl;
 		
 			}
 		
@@ -135,11 +133,11 @@ int main() // TODO fixing output of square names
 
 			if (player1->mMoney > player1->mMoney)
 			{
-				cout << "Player 1 wins" << endl;
+				cout << "Player 1 wins!" << endl;
 			}
 			else if (player2->mMoney > player1->mMoney)
 			{
-				cout << "Player 2 wins." << endl;
+				cout << "Player 2 wins!" << endl;
 			}
 			else
 			{

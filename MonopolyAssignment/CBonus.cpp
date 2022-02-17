@@ -53,7 +53,7 @@ void CBonus::OnLanding(shared_ptr<CPlayer> playerWhoLanded)
 		break;
 	}
 
-	cout << *playerWhoLanded << " has " << POUND << playerWhoLanded->mMoney << "." << endl;
+	//cout << *playerWhoLanded << " has " << POUND << playerWhoLanded->mMoney << "." << endl;
 
 
 
@@ -61,5 +61,5 @@ void CBonus::OnLanding(shared_ptr<CPlayer> playerWhoLanded)
 
 int CBonus::Random()
 {
-	return static_cast<int>(static_cast<double> (rand()) / (RAND_MAX + 1) * 6.0f + 1);
+	return static_cast<int>(static_cast<double> (rand()) / (RAND_MAX + 1) * NUMBER_OF_BONUS_PENALTY + 1);
 }

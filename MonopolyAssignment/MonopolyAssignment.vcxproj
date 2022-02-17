@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="CBonus.cpp" />
     <ClCompile Include="CFreeParking.cpp" />
+    <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CGo.cpp" />
     <ClCompile Include="CGoToJail.cpp" />
     <ClCompile Include="CJail.cpp" />
@@ -156,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="CBonus.h" />
     <ClInclude Include="CFreeParking.h" />
+    <ClInclude Include="CGame.h" />
     <ClInclude Include="CGo.h" />
     <ClInclude Include="CGoToJail.h" />
     <ClInclude Include="CJail.h" />

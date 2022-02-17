@@ -13,11 +13,13 @@ public:
 	
 	friend istream& operator >> (istream& inputStream, CGo& go);
 
-	void OnLanding()
+	void OnLanding(shared_ptr<CPlayer> playerWhoLanded)
 	{
 		// Do nothing for now
 	}
 
+
+	
 
 };
 

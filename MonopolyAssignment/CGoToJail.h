@@ -12,6 +12,7 @@ public:
 
 	CGoToJail(istream& file);
 	void OnLanding(shared_ptr<CPlayer> playerWhoLanded);
+	void DisplayName();
 
 	friend istream& operator >> (istream& inputStream, CGoToJail& goToJail);
 };

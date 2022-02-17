@@ -19,5 +19,6 @@ public:
 	friend istream& operator >> (istream& inputStream, CStation& station);
 
 	void Display();
+	void DisplayName();
 };
 

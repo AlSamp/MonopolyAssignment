@@ -40,6 +40,16 @@ void CProperty::Display()
 		cout << propertyCost << " " << propertyRent << " " << propertyColour << endl;
 }
 
+void CProperty:: DisplayName()
+{
+	cout << name;
+
+	if (name != "Friargate") // this is for you nick ty <3
+	{
+		cout << " " << namePart2;
+	}
+}
+
 int CProperty::getRent()
 {
 	return propertyRent;
@@ -60,9 +70,9 @@ void CProperty::setIsOwned(bool newStatus)
 
 
 
-void CProperty::setOwner(shared_ptr<CPlayer>&  newOwner)
+void CProperty::setOwner(shared_ptr<CPlayer>  newOwner)
 {
-	owner = newOwner;
+	owner = newOwner; // TODO move will be required if this is implemented
 }
 
 bool CProperty::getIsOwned()
@@ -83,18 +93,23 @@ void CProperty::OnLanding(shared_ptr<CPlayer> playerWhoLanded) //
 			//Set that player as the owner
 			isOwned = true;
 			owner = playerWhoLanded;
-			cout << *playerWhoLanded << " buys " << this->name << " for " << POUND << this->propertyCost << "." <<endl;
+			cout << *playerWhoLanded << " buys "; DisplayName(); cout << " for " << POUND << this->propertyCost << "." << endl;
 		}
 		else
 		{
-			cout << *playerWhoLanded << " does not have enough money to purchase " << this->name << endl; // TODO make this refer to full names
+			// When player has not enough money to buy a property output this.
+			cout << *playerWhoLanded << " does not have enough money to purchase "; DisplayName(); cout << endl;				
 		}
 	}
 	else  // if the property is owned
 	{
-		// if the player does not own the property and is it owned, charge them rent.
+		// if the player does not own the property and it is owned, charge them rent.
 		if (playerWhoLanded->mName != owner->mName)
 		{
+
+			//perform a check on wether or not the player owns all colours of one group.
+
+
 			//charge the player rent
 			playerWhoLanded->mMoney -= this->propertyRent;
 			// pay the owner rent

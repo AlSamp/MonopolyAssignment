@@ -12,7 +12,7 @@ void CGoToJail::OnLanding(shared_ptr<CPlayer> playerWhoLanded)
 	// Inform player of being throw to jail.
 	cout << playerWhoLanded->mName << " goes to Jail." << endl;
 	// Deduct £50 from the poor fellow.
-	cout << playerWhoLanded->mName << " pays " << POUND  <<"50." << endl;
+	cout << playerWhoLanded->mName << " pays " << POUND  <<"50" << endl;
 	playerWhoLanded->mMoney -= JAIL_PAYMENT;
 
 }
@@ -22,4 +22,9 @@ istream& operator>>(istream& inputStream, CGoToJail& goToJail)
 	inputStream >> goToJail.namePart2;
 	inputStream >> goToJail.namePart3;
 	return inputStream;
+}
+
+void CGoToJail::DisplayName()
+{
+	cout << name << " " << namePart2 << " " << namePart3;
 }

@@ -17,6 +17,10 @@ const int BONUS_PENALTY_3 = 100;
 const int BONUS_PENALTY_4 = 150;
 const int BONUS_PENALTY_5 = 200;
 const int BONUS_PENALTY_6 = 300;
+
+//floats
+const float SIDE_OF_DICE = 6;
+const float NUMBER_OF_BONUS_PENALTY = 6.0f;
 // strings
 const string PLAYER_1_NAME = "Hamster";
 const string PLAYER_2_NAME = "Pumpkin";
