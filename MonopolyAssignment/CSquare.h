@@ -1,3 +1,4 @@
+// Alix Sampford G20790929
 #pragma once
 #include <iostream>
 #include "CPlayer.h" // dependecy?
@@ -6,30 +7,14 @@ using namespace std;
 class CSquare
 {
 protected:
-	string name;
+	string mName;
 
 public:
-	CSquare(istream& file);
-	virtual ~CSquare() // neccessary for deletion of derived class objects.
-	{
-		
-	}
+	CSquare(istream& file); // Factory will read the in the information from file and place into this object accordingly.
 
-	virtual void OnLanding(shared_ptr<CPlayer> playerWhoLanded) = 0;
-	//{
-	//	cout << "ERROR BASE CLASS FUNCTION CALLED" << endl;
-	//}
-
-	virtual void DisplayName()
-	{
-		cout << name;
-	}
-
-	friend istream& operator >> (istream& inputStream, CSquare& square);
-	
-	friend ostream& operator << (ostream& outputStream, const CSquare& square);
-	virtual void Display(); // yay polymorphism
-
-	
+	virtual ~CSquare() {}// neccessary for deletion of derived class objects.
+	virtual void OnLanding(shared_ptr<CPlayer> playerWhoLanded) = 0; // All derived objects must specify what they do OnLanding even if its nothing.
+	virtual void DisplayName(); // This is used by go and jail but overriden by all of derived squared objects.
+	friend istream& operator >> (istream& inputStream, CSquare& square); // override input operator.	
 };
 

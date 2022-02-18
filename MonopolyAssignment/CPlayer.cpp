@@ -1,3 +1,4 @@
+// Alix Sampford G20790929
 #include "CPlayer.h"
 
 CPlayer::CPlayer(string name, int startingMoney)

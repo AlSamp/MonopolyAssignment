@@ -1,8 +1,9 @@
+// Alix Sampford G20790929
 #include "CGame.h"
 
 // Returns a random number in the range 1 .. 6
 // Note that I am using casting to convert one data type to another 
- int CGame::Random()
+int CGame::Random()
 {
 	return static_cast<int>(static_cast<double> (rand()) / (RAND_MAX + 1) * SIDES_OF_DICE + 1);
 }
@@ -24,37 +25,42 @@ void MovePlayer(shared_ptr<CPlayer> player, int roll, int boardSize)
 	}
 }
 
-void CGame::PlayerLanding(shared_ptr<CPlayer> playerWhoLanded, CSquare& square) // TODO override each class function for landing on a square in each of the derived classes.
+void CGame::PlayerLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded, CSquare& square) // When a player lands on a specific square before the appropriate action
 {
-	square.OnLanding(playerWhoLanded);
+	square.OnLanding(ptrPlayerWhoLanded);
 }
 
 CGame::CGame()
 {
 	ReadFile(); 
-	vPlayers.push_back(make_shared<CPlayer>(PLAYER_1_NAME, STARTING_MONEY));
-	vPlayers.push_back(make_shared<CPlayer>(PLAYER_2_NAME, STARTING_MONEY));
-	vPlayers.push_back(make_shared<CPlayer>(PLAYER_3_NAME, STARTING_MONEY));
-	vPlayers.push_back(make_shared<CPlayer>(PLAYER_4_NAME, STARTING_MONEY));
+	// push players with their information in the vector that will contain them and be used to access them throughout the game.
+	vPtrPlayers.push_back(make_shared<CPlayer>(PLAYER_1_NAME, STARTING_MONEY));
+	vPtrPlayers.push_back(make_shared<CPlayer>(PLAYER_2_NAME, STARTING_MONEY));
+	vPtrPlayers.push_back(make_shared<CPlayer>(PLAYER_3_NAME, STARTING_MONEY));
+	vPtrPlayers.push_back(make_shared<CPlayer>(PLAYER_4_NAME, STARTING_MONEY));
 }
 
 void CGame::GameOver()
 { 
-	string winner = "";
+	string winner;
 	int number = 0;
+
 	cout << endl << "GAME OVER" << endl;
 	for (int i = 0; i < MAX_NUM_PLAYERS; i++)
 	{	
-		cout << vPlayers[i]->mName << " has " << POUND << vPlayers[i]->mMoney << endl;
+		// out all player balances to screen
+		cout << vPtrPlayers[i]->mName << " has " << POUND << vPtrPlayers[i]->mMoney << endl;
 
-		if (vPlayers[i]->mMoney > number)
+		// Check and record witch player has the most moneny and output who has the most.
+		if (vPtrPlayers[i]->mMoney > number)
 		{
-			number = vPlayers[i]->mMoney;
-			winner = vPlayers[i]->mName;
+			number = vPtrPlayers[i]->mMoney;
+			winner = vPtrPlayers[i]->mName;
 		}
 
 	}
 
+	//output winner
 	cout << endl << winner << " wins!" << endl;
 
 }
@@ -69,9 +75,9 @@ void CGame::ReadFile()
 		{
 			int type = 0;
 			infile >> type;
-			if (type != 0)
+			if (type != 0) // Get the number type of the data and place into sqaure factory for assembly.
 			{
-				vSquareList.push_back(NewSquare(ESquareType(type), infile)); // cast type into enum
+				vPtrSquareList.push_back(NewSquare(ESquareType(type), infile)); // cast type into enum
 			}
 		}
 	}
@@ -81,8 +87,8 @@ void CGame::ReadFile()
 void CGame::Monopolish() // The game itself happens here
 {
 		int diceRoll;
-		int boardSize = vSquareList.size();
-		srand(SEED);
+		int boardSize = vPtrSquareList.size();
+		srand(SEED); // game seed
 
 		cout << GAME_START_MESSAGE << endl;
 
@@ -101,29 +107,21 @@ void CGame::Monopolish() // The game itself happens here
 				diceRoll = Random(); 
 
 				//output the player and what they rolled
-				cout << *vPlayers[i] << " rolls : " << diceRoll << endl;
+				cout << *vPtrPlayers[i] << " rolls : " << diceRoll << endl;
 
 				// move the player on the board.
-				MovePlayer(vPlayers[i], diceRoll, boardSize);
+				MovePlayer(vPtrPlayers[i], diceRoll, boardSize);
 
 				// acknowledge player position and then perform the appropriate actions for the square they landed on.
-				cout << *vPlayers[i] << " lands on "; vSquareList[vPlayers[i]->mPlayerPosition]->DisplayName(); cout << endl;
+				cout << *vPtrPlayers[i] << " lands on "; vPtrSquareList[vPtrPlayers[i]->mPlayerPosition]->DisplayName(); cout << endl;
 
 				// Proceed with square specific rules upon a player landing.
-				PlayerLanding(vPlayers[i], *vSquareList[vPlayers[i]->mPlayerPosition]);
+				PlayerLanding(vPtrPlayers[i], *vPtrSquareList[vPtrPlayers[i]->mPlayerPosition]);
 
 				//At the end of each player’s inform them of their current balance.
-				cout << vPlayers[i]->mName << " has " << POUND << vPlayers[i]->mMoney << endl;
+				cout << vPtrPlayers[i]->mName << " has " << POUND << vPtrPlayers[i]->mMoney << endl;
 			}
-
 		}
 
 		GameOver();
-
-
-
-
-	
 }
-
-

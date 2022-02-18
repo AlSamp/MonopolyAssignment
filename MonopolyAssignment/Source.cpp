@@ -1,4 +1,4 @@
-// Alix Sampford
+// Alix Sampford G20790929
 
 #define _CRTDBG_MAP_ALLOC  // memory leak detection.
 #include <stdlib.h>		   // memory leak detection.
@@ -12,6 +12,4 @@ int main()
 		monopilsh.Monopolish(); /// play the game.
 	}
 		_CrtDumpMemoryLeaks(); // memory leak detection.
-	
-
 }

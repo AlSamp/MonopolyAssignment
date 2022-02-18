@@ -1,3 +1,4 @@
+// Alix Sampford G20790929
 #include "CSquare.h"
 
 CSquare::CSquare(istream& file) // this uses the friend function below to read in
@@ -8,19 +9,11 @@ CSquare::CSquare(istream& file) // this uses the friend function below to read i
 // no need for friend. or CSquare:: as this function belongs to input stream.
 istream& operator >> (istream& inputStream, CSquare& square)
 {
-	inputStream >> square.name;
+	inputStream >> square.mName;
 	return inputStream;
 }
 
-// no need for friend. or CSquare::as this function belongs to output stream.
-ostream& operator << (ostream& outputStream, const CSquare& square)
+void CSquare::DisplayName() // This is used by go and jail but overriden by all of derived squared objects.
 {
-	
-	outputStream << square.name;
-	return outputStream;
-}
-
-void CSquare::Display()
-{
-	cout << name;
+	cout << mName;
 }

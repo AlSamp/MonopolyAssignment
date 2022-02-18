@@ -1,3 +1,4 @@
+// Alix Sampford G20790929
 #include "CFreeParking.h"
 
 CFreeParking::CFreeParking(istream& file) : CSquare(file)
@@ -7,7 +8,7 @@ CFreeParking::CFreeParking(istream& file) : CSquare(file)
 
 istream& operator>>(istream& inputStream, CFreeParking& freeParking)
 {
-	inputStream >> freeParking.namePart2;
+	inputStream >> freeParking.mNamePart2;
 
 	return inputStream;
 }
@@ -21,5 +22,5 @@ void CFreeParking::OnLanding(shared_ptr<CPlayer> playerWhoLanded)
 
 void CFreeParking::DisplayName() // CSquare overridden virtual function
 {
-	cout << " " << name << " " << namePart2 << " ";
+	cout << mName << " " << mNamePart2;
 }

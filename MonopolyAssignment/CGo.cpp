@@ -1,3 +1,4 @@
+// Alix Sampford G20790929
 #include "CGo.h"
 
 CGo::CGo(istream& file) : CSquare(file)

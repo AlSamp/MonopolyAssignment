@@ -1,3 +1,4 @@
+// Alix Sampford G20790929
 #pragma once
 #include "CSquare.h"
 #include "Constants.h"
@@ -5,30 +6,19 @@
 class CProperty : public CSquare
 {
 protected:
-	string namePart2;
-	int propertyCost;
-	int propertyRent;
-	int propertyColour;
-	bool isOwned;
-	shared_ptr<CPlayer> owner;
+	string mNamePart2;
+	int mPropertyCost;
+	int mPropertyRent;
+	int mPropertyColour;
+	bool mIsOwned;
+	shared_ptr<CPlayer> pOwner;
 
 public:
 
-	CProperty(istream& file);
+	CProperty(istream& file); // Factory will read the in the information from file and place into this object accordingly.
 
-	void Display();
-	void DisplayName();
-	int getRent();
-	int getCost();
-	int getColour();
-	void setIsOwned(bool newStatus);
-	bool getIsOwned();
-	string getOwner();
-	void setOwner(shared_ptr<CPlayer> newOwner);
-	void OnLanding(shared_ptr<CPlayer> playerWhoLanded);
-
-
-	
+	void DisplayName(); // output
+	void OnLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded);
 	friend istream& operator >> (istream& inputStream, CProperty& property);
 };
 

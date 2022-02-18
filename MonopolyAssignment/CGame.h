@@ -1,3 +1,4 @@
+// Alix Sampford G20790929
 #pragma once
 #include <stdlib.h>		   // memory leak detection.
 #include <crtdbg.h>		   // memory leak detection.
@@ -13,24 +14,24 @@
 
 using namespace std;
 
-typedef vector<unique_ptr<CSquare>> uVector; // TODO ask about this
-typedef  shared_ptr<CPlayer> PlayerPtr;
-typedef vector<shared_ptr<CPlayer>> PlayersVector;
 
 class CGame
 {
 private:
-	static int Random();
-	void ReadFile();
-	void GameOver();
-	void PlayerLanding(shared_ptr<CPlayer> playerWhoLanded, CSquare& square);
+	typedef vector<unique_ptr<CSquare>> vupVector; // TODO ask about this
+	typedef  shared_ptr<CPlayer> spPlayer;
+	typedef vector<shared_ptr<CPlayer>> vpPlayers;
 
-	uVector vSquareList; // The squares of the monopolish board will be stored within this vector of unique pointers
-	PlayersVector vPlayers;
-	PlayerPtr pPlayer1; // shared pointers. The property and station classes will share the player class.
-	PlayerPtr pPlayer2;
+	int Random();
+	void ReadFile();
+	void GameOver(); // Check player money and output who has the most as winner
+	void PlayerLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded, CSquare& square); // When a player lands on a specific square before the appropriate action //TODO ask shared_ptr<CPlayer>&
+
+	vupVector vPtrSquareList; // The squares of the monopolish board will be stored within this vector of unique pointers
+	vpPlayers vPtrPlayers; // vector of shared pointers. The property and station classes will share the player class.
+
 public:
-	CGame(); // constructor to initialise all game variable.
+	CGame(); // constructor to initialise all game variables.
 	void Monopolish();
 };
 

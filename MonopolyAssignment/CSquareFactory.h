@@ -1,3 +1,4 @@
+// Alix Sampford G20790929
 #pragma once
 
 #include <fstream>
@@ -18,8 +19,6 @@ enum class ESquareType : int
 	FreeParking = 8
 
 };
-
-//CSquare* NewSquare(ESquareType square, istream& file);
 
 unique_ptr<CSquare> NewSquare(ESquareType square, istream& file);
 
