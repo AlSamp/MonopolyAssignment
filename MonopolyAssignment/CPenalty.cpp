@@ -11,7 +11,7 @@ istream& operator>>(istream& inputStream, CPenalty& penalty)
 	return inputStream;
 }
 
-void CPenalty::OnLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded)
+void CPenalty::OnLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded)
 {
 	// roll dice, each dice roll from 1 - 6 has its own negative outcome for the player
 	int diceRoll = Random();

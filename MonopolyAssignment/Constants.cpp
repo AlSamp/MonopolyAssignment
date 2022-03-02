@@ -22,7 +22,6 @@ const int BONUS_PENALTY_6 = 300;
 const float SIDES_OF_DICE = 6;
 const float NUMBER_OF_BONUS_PENALTY = 6.0f;
 // strings
-const string NICKS_NEFARIOUS_DEED = "Friargate";
 const string GAME_FILE = "monopoly.txt";
 const string PLAYER_1_NAME = "Hamster";
 const string PLAYER_2_NAME = "Pumpkin";

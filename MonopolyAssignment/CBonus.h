@@ -14,7 +14,7 @@ public:
 
 	CBonus(istream& file); // Factory will read the in the information from file and place into this object accordingly.
 	int Random();
-	void OnLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded);
+	void OnLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded);
 	friend istream& operator >> (istream& inputStream, CBonus& go);
 };
 

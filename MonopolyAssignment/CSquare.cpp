@@ -9,7 +9,36 @@ CSquare::CSquare(istream& file) // this uses the friend function below to read i
 // no need for friend. or CSquare:: as this function belongs to input stream.
 istream& operator >> (istream& inputStream, CSquare& square)
 {
-	inputStream >> square.mName;
+	bool anotherWord = false;
+	int nextChar = 0;
+
+	do
+	{
+		//input word
+		string word;
+		inputStream >> word;
+		square.mName += word;
+
+		// consume white space
+		inputStream >> ws;
+
+		//peek nect char
+		nextChar = inputStream.peek();
+
+		// if next char is not a number then that means theres another word.
+		anotherWord = !isdigit(nextChar) && nextChar != EOF;
+
+		// add space if there is another word to be added.
+		if (anotherWord)
+		{
+			square.mName += " ";
+		}
+
+
+	} while (anotherWord);
+
+
+	//inputStream >> square.mName;
 	return inputStream;
 }
 

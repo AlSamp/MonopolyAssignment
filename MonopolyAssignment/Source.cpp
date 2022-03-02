@@ -11,5 +11,7 @@ int main()
 		CGame monopilsh;
 		monopilsh.Monopolish(); /// play the game.
 	}
+
+
 		_CrtDumpMemoryLeaks(); // memory leak detection.
 }

@@ -11,7 +11,7 @@ istream& operator>>(istream& inputStream, CBonus& bonus)
     return inputStream;
 }
 
-void CBonus::OnLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded)
+void CBonus::OnLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded)
 {
 	// roll dice, each dice roll from 1 - 6 has its own negative outcome for the player
 	//srand(SEED);

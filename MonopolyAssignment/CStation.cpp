@@ -12,17 +12,12 @@ CStation::CStation(istream& file) : CSquare(file)
 
 istream& operator>>(istream& inputStream, CStation& station)
 {
-	inputStream >> station.mNamePart2;
-
 	return inputStream;
 }
 
-void CStation::DisplayName()
-{
-	cout << mName << " " << mNamePart2;
-}
 
-void CStation::OnLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded) // 
+
+void CStation::OnLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded) // 
 {
 	// check is property is owned. 
 	if (isOwned == false)

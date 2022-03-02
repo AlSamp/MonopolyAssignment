@@ -11,7 +11,7 @@ protected:
 public:
 
 	CJail(istream& file); // Factory will read the in the information from file and place into this object accordingly.
-	void OnLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded);
+	void OnLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded);
 
 	friend istream& operator >> (istream& inputStream, CJail& go);
 };

@@ -18,11 +18,6 @@ CProperty::CProperty(istream& file) : CSquare(file)
 
 istream& operator >>(istream& inputStream, CProperty& property)
 {
-	if (property.mName != NICKS_NEFARIOUS_DEED) // this is for you nick ty <3
-	{
-		inputStream >> property.mNamePart2;
-	}
-
 		inputStream >> property.mPropertyCost;
 		inputStream >> property.mPropertyRent;
 		inputStream >> property.mPropertyColour;
@@ -30,21 +25,13 @@ istream& operator >>(istream& inputStream, CProperty& property)
 	return inputStream;
 }
 
-void CProperty:: DisplayName()
-{
-	cout << mName;
-
-	if (mName != NICKS_NEFARIOUS_DEED) // this is for you nick ty <3
-	{
-		cout << " " << mNamePart2;
-	}
-}
 
 
 
 
 
-void CProperty::OnLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded) // 
+
+void CProperty::OnLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded) // 
 {
 	// check is property is owned. 
 	if (mIsOwned == false)

@@ -8,7 +8,7 @@ int CGame::Random()
 	return static_cast<int>(static_cast<double> (rand()) / (RAND_MAX + 1) * SIDES_OF_DICE + 1);
 }
 
-void MovePlayer(shared_ptr<CPlayer> player, int roll, int boardSize)
+void CGame::MovePlayer(shared_ptr<CPlayer>& player, int roll, int boardSize)
 {
 	for (int j = 0; j < roll; j++) // move the player on square at a time
 	{
@@ -25,7 +25,7 @@ void MovePlayer(shared_ptr<CPlayer> player, int roll, int boardSize)
 	}
 }
 
-void CGame::PlayerLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded, CSquare& square) // When a player lands on a specific square before the appropriate action
+void CGame::PlayerLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded, CSquare& square) // When a player lands on a specific square before the appropriate action
 {
 	square.OnLanding(ptrPlayerWhoLanded);
 }

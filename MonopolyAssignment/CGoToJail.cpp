@@ -6,7 +6,7 @@ CGoToJail::CGoToJail(istream& file) :CSquare(file)
 	file >> *this;
 }
 
-void CGoToJail::OnLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded)
+void CGoToJail::OnLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded)
 {
 	// set the player position to square 7 (zero based index so its 6)
 	ptrPlayerWhoLanded->mPlayerPosition = 6;
@@ -19,12 +19,7 @@ void CGoToJail::OnLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded)
 
 istream& operator>>(istream& inputStream, CGoToJail& goToJail)
 {
-	inputStream >> goToJail.mNamePart2;
-	inputStream >> goToJail.mNamePart3;
 	return inputStream;
 }
 
-void CGoToJail::DisplayName()
-{
-	cout << mName << " " << mNamePart2 << " " << mNamePart3;
-}
+

@@ -25,8 +25,8 @@ private:
 	int Random();
 	void ReadFile();
 	void GameOver(); // Check player money and output who has the most as winner
-	void PlayerLanding(shared_ptr<CPlayer> ptrPlayerWhoLanded, CSquare& square); // When a player lands on a specific square before the appropriate action //TODO ask shared_ptr<CPlayer>&
-
+	void MovePlayer(shared_ptr<CPlayer>& player, int roll, int boardSize);
+	void PlayerLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded, CSquare& square); // When a player lands on a specific square before the appropriate action //TODO ask shared_ptr<CPlayer>&
 	vupVector vPtrSquareList; // The squares of the monopolish board will be stored within this vector of unique pointers
 	vpPlayers vPtrPlayers; // vector of shared pointers. The property and station classes will share the player class.
 

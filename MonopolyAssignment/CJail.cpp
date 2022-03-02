@@ -13,7 +13,7 @@ istream& operator>>(istream& inputStream, CJail& jail)
 	return inputStream;
 }
 
-void CJail::OnLanding(shared_ptr<CPlayer> playerWhoLanded) 
+void CJail::OnLanding(shared_ptr<CPlayer>& playerWhoLanded) 
 {
 	cout << playerWhoLanded->mName << " is just visiting." << endl;
 }
