@@ -1,7 +1,6 @@
 // Alix Sampford G20790929
 #pragma once
 #include "CSquare.h"
-#include "Constants.h"
 
 class CProperty : public CSquare
 {

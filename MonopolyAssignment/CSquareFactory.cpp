@@ -12,9 +12,6 @@
 
 
 
-
-  // note: added "{}" for each case because an error occured. Solution explanation : https://stackoverflow.com/questions/5136295/switch-transfer-of-control-bypasses-initialization-of-when-calling-a-function
-	
 unique_ptr<CSquare> NewSquare(ESquareType square, istream& file)
 {
 	switch (square)

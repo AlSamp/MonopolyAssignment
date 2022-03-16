@@ -44,7 +44,7 @@ void CProperty::OnLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded) //
 			//Set that player as the owner
 			mIsOwned = true;
 			pOwner = ptrPlayerWhoLanded;
-			cout << *ptrPlayerWhoLanded << " buys "; DisplayName(); cout << " for " << POUND << this->mPropertyCost << "." << endl;
+			cout << *ptrPlayerWhoLanded << " buys "; DisplayName(); cout << " for " << k.POUND << this->mPropertyCost << "." << endl;
 		}
 		else
 		{
@@ -66,7 +66,7 @@ void CProperty::OnLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded) //
 			// pay the owner rent
 			pOwner->mMoney += this->mPropertyRent;
 
-			cout << *ptrPlayerWhoLanded << " has payed " << POUND << mPropertyRent << " rent to " << pOwner->mName << "." << endl;
+			cout << *ptrPlayerWhoLanded << " has payed " << k.POUND << mPropertyRent << " rent to " << pOwner->mName << "." << endl;
 		}
 		else
 		{

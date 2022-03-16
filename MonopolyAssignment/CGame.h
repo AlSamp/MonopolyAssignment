@@ -11,6 +11,7 @@
 #include "CSquare.h"
 #include "CPlayer.h"
 #include "CProperty.h"
+#include "Constants.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ private:
 	typedef vector<unique_ptr<CSquare>> vupVector; // TODO ask about this
 	typedef  shared_ptr<CPlayer> spPlayer;
 	typedef vector<shared_ptr<CPlayer>> vpPlayers;
+	CConstants k;
 
 	int Random();
 	void ReadFile();

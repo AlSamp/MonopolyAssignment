@@ -12,7 +12,7 @@ istream& operator >> (istream& inputStream, CSquare& square)
 	bool anotherWord = false;
 	int nextChar = 0;
 
-	do
+	do // check if the word read in is complete. No word read in should have a number in it.
 	{
 		//input word
 		string word;

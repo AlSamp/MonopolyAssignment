@@ -26,11 +26,11 @@ void CStation::OnLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded) //
 		if (ptrPlayerWhoLanded->mMoney > 0)
 		{
 			//charge the player for their purchase.
-			ptrPlayerWhoLanded->mMoney -= STATION_PRICE;
+			ptrPlayerWhoLanded->mMoney -= k.STATION_PRICE;
 			//Set that player as the owner
 			isOwned = true;
 			pOwner = ptrPlayerWhoLanded;
-			cout << *ptrPlayerWhoLanded << " buys "; DisplayName(); cout  << " for " << POUND << STATION_PRICE << endl;
+			cout << *ptrPlayerWhoLanded << " buys "; DisplayName(); cout  << " for " << k.POUND << k.STATION_PRICE << endl;
 		}
 		else
 		{
@@ -43,11 +43,11 @@ void CStation::OnLanding(shared_ptr<CPlayer>& ptrPlayerWhoLanded) //
 		if (ptrPlayerWhoLanded->mName != pOwner->mName)
 		{
 			//charge the player rent
-			ptrPlayerWhoLanded->mMoney -= STATION_RENT;
+			ptrPlayerWhoLanded->mMoney -= k.STATION_RENT;
 			// pay the owner rent
-			pOwner->mMoney += STATION_RENT;
+			pOwner->mMoney += k.STATION_RENT;
 
-			cout << *ptrPlayerWhoLanded << " pays " << POUND << STATION_RENT << " for ticket " << endl; // << owner->mName
+			cout << *ptrPlayerWhoLanded << " pays " << k.POUND << k.STATION_RENT << " for ticket " << endl; // << owner->mName
 		}
 	}
 

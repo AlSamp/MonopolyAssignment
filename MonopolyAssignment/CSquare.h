@@ -8,6 +8,7 @@ class CSquare
 {
 protected:
 	string mName;
+	CConstants k;
 
 public:
 	CSquare(istream& file); // Factory will read the in the information from file and place into this object accordingly.

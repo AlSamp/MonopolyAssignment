@@ -5,7 +5,7 @@
 // Note that I am using casting to convert one data type to another 
 int CGame::Random()
 {
-	return static_cast<int>(static_cast<double> (rand()) / (RAND_MAX + 1) * SIDES_OF_DICE + 1);
+	return static_cast<int>(static_cast<double> (rand()) / (RAND_MAX + 1) * k.SIDES_OF_DICE + 1);
 }
 
 void CGame::MovePlayer(shared_ptr<CPlayer>& player, int roll, int boardSize)
@@ -18,8 +18,8 @@ void CGame::MovePlayer(shared_ptr<CPlayer>& player, int roll, int boardSize)
 		{
 			player->mPlayerPosition = 0;
 			// pass go and collect 200
-			player->mMoney += PASS_GO_AMOUNT;
-			cout << *player << GO_MESSAGE << POUND << PASS_GO_AMOUNT << endl;
+			player->mMoney += k.PASS_GO_AMOUNT;
+			cout << *player << k.GO_MESSAGE << k.POUND << k.PASS_GO_AMOUNT << endl;
 		}
 
 	}
@@ -34,10 +34,10 @@ CGame::CGame()
 {
 	ReadFile(); 
 	// push players with their information in the vector that will contain them and be used to access them throughout the game.
-	vPtrPlayers.push_back(make_shared<CPlayer>(PLAYER_1_NAME, STARTING_MONEY));
-	vPtrPlayers.push_back(make_shared<CPlayer>(PLAYER_2_NAME, STARTING_MONEY));
-	vPtrPlayers.push_back(make_shared<CPlayer>(PLAYER_3_NAME, STARTING_MONEY));
-	vPtrPlayers.push_back(make_shared<CPlayer>(PLAYER_4_NAME, STARTING_MONEY));
+	vPtrPlayers.push_back(make_shared<CPlayer>(k.PLAYER_1_NAME, k.STARTING_MONEY));
+	vPtrPlayers.push_back(make_shared<CPlayer>(k.PLAYER_2_NAME, k.STARTING_MONEY));
+	vPtrPlayers.push_back(make_shared<CPlayer>(k.PLAYER_3_NAME, k.STARTING_MONEY));
+	vPtrPlayers.push_back(make_shared<CPlayer>(k.PLAYER_4_NAME, k.STARTING_MONEY));
 }
 
 void CGame::GameOver()
@@ -46,10 +46,10 @@ void CGame::GameOver()
 	int number = 0;
 
 	cout << endl << "GAME OVER" << endl;
-	for (int i = 0; i < MAX_NUM_PLAYERS; i++)
+	for (int i = 0; i < k.MAX_NUM_PLAYERS; i++)
 	{	
 		// out all player balances to screen
-		cout << vPtrPlayers[i]->mName << " has " << POUND << vPtrPlayers[i]->mMoney << endl;
+		cout << vPtrPlayers[i]->mName << " has " << k.POUND << vPtrPlayers[i]->mMoney << endl;
 
 		// Check and record witch player has the most moneny and output who has the most.
 		if (vPtrPlayers[i]->mMoney > number)
@@ -68,7 +68,7 @@ void CGame::GameOver()
 void CGame::ReadFile()
 {
 	ifstream infile;
-	infile.open(GAME_FILE);
+	infile.open(k.GAME_FILE);
 	if (infile.is_open())
 	{
 		while (!infile.eof())
@@ -88,17 +88,17 @@ void CGame::Monopolish() // The game itself happens here
 {
 		int diceRoll;
 		int boardSize = vPtrSquareList.size();
-		srand(SEED); // game seed
+		srand(k.SEED); // game seed
 
-		cout << GAME_START_MESSAGE << endl;
+		cout << k.GAME_START_MESSAGE << endl;
 
-		for (int round = 1; round <= MAX_NUM_ROUNDS; round++) // 
+		for (int round = 1; round <= k.MAX_NUM_ROUNDS; round++) // 
 		{
 			cout << endl << "<< Round " << round << " >>" << endl; // Output what round it is.
 
 			// Player turns
 
-			for (int i = 0; i < MAX_NUM_PLAYERS; i++)
+			for (int i = 0; i < k.MAX_NUM_PLAYERS; i++)
 			{
 				//Output which players turn it is.
 				cout << endl << "Player "<< i+1 <<" turn begins" << endl;
@@ -119,7 +119,7 @@ void CGame::Monopolish() // The game itself happens here
 				PlayerLanding(vPtrPlayers[i], *vPtrSquareList[vPtrPlayers[i]->mPlayerPosition]);
 
 				//At the end of each player’s inform them of their current balance.
-				cout << vPtrPlayers[i]->mName << " has " << POUND << vPtrPlayers[i]->mMoney << endl;
+				cout << vPtrPlayers[i]->mName << " has " << k.POUND << vPtrPlayers[i]->mMoney << endl;
 			}
 		}
 
